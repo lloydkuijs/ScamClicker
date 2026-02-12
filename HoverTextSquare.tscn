@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo8rsnh7d735f"]
+
+[ext_resource type="Texture2D" uid="uid://j5ubdxnu80x2" path="res://Assets/UpgradeBox.webp" id="1_h4iwo"]
+
+[node name="TextureRect" type="TextureRect"]
+texture_filter = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_h4iwo")

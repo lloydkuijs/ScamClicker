@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceiuanqbl5xa2"]
+
+[ext_resource type="Script" uid="uid://bntsffl8pxvmw" path="res://multiplierUpgrade.gd" id="1_ib6kl"]
+[ext_resource type="Texture2D" uid="uid://j5ubdxnu80x2" path="res://Assets/UpgradeBox.webp" id="2_0n3cj"]
+[ext_resource type="AudioStream" uid="uid://0mnyu5twmn7x" path="res://Assets/Audio Assets/Error.mp3" id="3_h1xw8"]
+[ext_resource type="PackedScene" uid="uid://47w4awjogke5" path="res://HoverText.tscn" id="4_xu4e3"]
+
+[node name="Upgrade2" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -608.0
+offset_bottom = -328.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "hello wqorld"
+script = ExtResource("1_ib6kl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h1xw8")
+volume_db = -10.0
+
+[node name="squareShopButton" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 4
+
+[node name="TextureRect" type="TextureRect" parent="squareShopButton"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_0n3cj")
+
+[node name="HoverText" parent="squareShopButton" instance=ExtResource("4_xu4e3")]
+visible = false
+z_index = 100
+layout_mode = 0
+offset_left = -11.0
+offset_top = 31.0
+offset_right = 29.0
+offset_bottom = 71.0
+
+[connection signal="pressed" from="squareShopButton" to="squareShopButton" method="_on_pressed"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://47w4awjogke5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7cdje"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="HoverText" type="TextureRect"]
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 100
+layout_mode = 0
+offset_left = -0.9999924
+offset_right = 88.00001
+offset_bottom = 69.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7cdje")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+visible = false
+z_index = 1
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Test"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

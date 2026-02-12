@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=3 uid="uid://bqt2pvay84nmd"]
+
+[ext_resource type="Script" uid="uid://gurugtkf36u4" path="res://MainScript.gd" id="1_63xb8"]
+[ext_resource type="Texture2D" uid="uid://cjfgd2exsth3g" path="res://Assets/Cloud_background_phone.png" id="2_j4ean"]
+[ext_resource type="Texture2D" uid="uid://mggsaodajvfi" path="res://Assets/Knop_scam_clicker.png" id="2_oavkx"]
+[ext_resource type="AudioStream" uid="uid://4ktnomf2wvoc" path="res://Assets/Audio Assets/telring background.mp3" id="4_2tkeu"]
+[ext_resource type="PackedScene" uid="uid://dgms5rfw7oerh" path="res://shop.tscn" id="4_hy2qq"]
+[ext_resource type="PackedScene" uid="uid://blg51ocpyoa7" path="res://LootChest.tscn" id="5_7mycd"]
+[ext_resource type="AudioStream" uid="uid://b5vgba7hritxq" path="res://Assets/Audio Assets/Critical Hit.mp3" id="7_272bh"]
+
+[sub_resource type="Animation" id="Animation_lquwl"]
+resource_name = "Click"
+length = 0.135
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.133333),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "Hover"
+length = 0.235
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.000434416, 0.233768),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"Click": SubResource("Animation_lquwl"),
+&"Hover": SubResource("Animation_272bh"),
+&"RESET": SubResource("Animation_7mycd")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 67.00746
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_63xb8")
+
+[node name="BG_Phone" type="Sprite2D" parent="."]
+position = Vector2(259, 35)
+texture = ExtResource("2_j4ean")
+
+[node name="FlavourText" type="RichTextLabel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 87.0
+offset_top = 2.0
+offset_right = 393.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 0.984314, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+
+[node name="MoneyText" type="RichTextLabel" parent="."]
+z_index = 4096
+offset_left = 483.0
+offset_top = 6.0
+offset_right = 696.0
+offset_bottom = 46.0
+fit_content = true
+scroll_active = false
+
+[node name="PassiveIncomeText" type="RichTextLabel" parent="."]
+z_index = 4096
+offset_left = 483.0
+offset_top = 30.0
+offset_right = 648.0
+offset_bottom = 77.0
+
+[node name="Shop" parent="." instance=ExtResource("4_hy2qq")]
+offset_left = 480.0
+offset_right = 480.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2tkeu")
+volume_db = 12.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5vw27")
+}
+
+[node name="PhoneButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 160.0
+offset_top = 102.0
+offset_right = 320.0
+offset_bottom = 262.0
+pivot_offset = Vector2(47, 20)
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_oavkx")
+
+[node name="LootChest" parent="." instance=ExtResource("5_7mycd")]
+
+[node name="Critical Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_272bh")
+volume_db = -30.0
+
+[node name="donttouchme" type="Area2D" parent="." groups=["no_spawn_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="donttouchme"]
+position = Vector2(239, 182)
+shape = SubResource("CircleShape2D_7mycd")
+
+[connection signal="mouse_entered" from="PhoneButton" to="." method="_on_phone_button_mouse_entered"]
+[connection signal="mouse_exited" from="PhoneButton" to="." method="_on_phone_button_mouse_exited"]
+[connection signal="pressed" from="PhoneButton" to="." method="_on_phone_button_pressed"]

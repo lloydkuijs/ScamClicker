@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyufyesmk2fke"]
+
+[ext_resource type="Script" uid="uid://b6yiav153k0aq" path="res://Upgrade.gd" id="1_j1h6a"]
+[ext_resource type="Texture2D" uid="uid://bjoluk03o3y0t" path="res://Assets/Scam_call_center_building_Phone.png" id="2_x1yxl"]
+[ext_resource type="AudioStream" uid="uid://0mnyu5twmn7x" path="res://Assets/Audio Assets/Error.mp3" id="3_pqx2f"]
+
+[node name="Upgrade" type="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 196.0
+offset_right = 196.0
+offset_bottom = 32.0
+script = ExtResource("1_j1h6a")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+color = Color(0, 0.670588, 0.933333, 1)
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer"]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/UpgradeButton"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_x1yxl")
+
+[node name="Name" type="RichTextLabel" parent="PanelContainer/UpgradeButton"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 0
+offset_left = 44.0
+offset_right = 164.0
+offset_bottom = 40.0
+mouse_filter = 1
+text = "test"
+fit_content = true
+
+[node name="Quantity" type="RichTextLabel" parent="PanelContainer/UpgradeButton"]
+modulate = Color(0, 1, 0.0666667, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 0
+offset_left = 112.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 41.0
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 25
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="Currency" type="RichTextLabel" parent="PanelContainer/UpgradeButton"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 19.0
+offset_right = 52.0
+offset_bottom = 59.0
+mouse_filter = 1
+
+[node name="Price" type="RichTextLabel" parent="PanelContainer/UpgradeButton"]
+modulate = Color(0, 1, 0.0666667, 1)
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 19.0
+offset_right = 123.0
+offset_bottom = 59.0
+mouse_filter = 1
+text = "
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pqx2f")
+volume_db = -10.0
+pitch_scale = 0.3
+stream_paused = true
