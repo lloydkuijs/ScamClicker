@@ -16,7 +16,7 @@ var buysteps = 0
 var predicounter
 var fakeprice
 var faketotmoney
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var tele_player: AudioStreamPlayer = $TeleRing
 @onready var email_player : AudioStreamPlayer = $YGM
 @onready var not_enough_audio: AudioStreamPlayer = $notEnoughAudio
 
@@ -78,8 +78,8 @@ func _on_scall_upgrade_pressed():
 			Global.telupbought = true
 			pricecounter += 1
 			if %TelephoneUpgrade.UpgradeQuantity % 10 == 0:
-				audio_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
-				audio_player.play()
+				tele_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
+				tele_player.play()
 			if maxtoggled:
 				if Global.money <= %TelephoneUpgrade.UpgradePrice: break
 			elif tentoggled:
@@ -94,10 +94,9 @@ func _on_scall_upgrade_pressed():
 	%TelephoneUpgrade.UpgradePrice *= 1.30
 	%TelephoneUpgrade.UpgradeText()
 	Global.telupbought = true
-	audio_player.volume_db = 24
 	if %TelephoneUpgrade.UpgradeQuantity % 10 == 0:
-		audio_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
-		audio_player.play()
+		tele_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
+		tele_player.play()
 	telparts.restart()
 	print('Halloi')
 	incomeTimer.start()
@@ -150,7 +149,6 @@ func _on_email_upgrade_pressed():
 	%EmailUpgrade.UpgradePrice *= 1.30
 	%EmailUpgrade.UpgradeText()
 	Global.telupbought = true
-	audio_player.volume_db = 24
 	if %EmailUpgrade.UpgradeQuantity % 10 == 0:
 		email_player.stream = preload("res://Assets/Audio Assets/YGM.mp3")
 		email_player.play()
@@ -189,8 +187,8 @@ func _on_lotteryup_upgrade_pressed() -> void:
 			Global.telupbought = true
 			pricecounter += 1
 			if %LotteryUpgrade.UpgradeQuantity % 10 == 0:
-				audio_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
-				audio_player.play()
+				tele_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
+				tele_player.play()
 			if maxtoggled:
 				if Global.money <= %LotteryUpgrade.UpgradePrice: break
 			elif tentoggled:
@@ -205,10 +203,9 @@ func _on_lotteryup_upgrade_pressed() -> void:
 	%LotteryUpgrade.UpgradePrice *= 1.30
 	%LotteryUpgrade.UpgradeText()
 	Global.telupbought = true
-	audio_player.volume_db = 24
 	if %LotteryUpgrade.UpgradeQuantity % 10 == 0:
-		audio_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
-		audio_player.play()
+		tele_player.stream = preload("res://Assets/Audio Assets/telring background.mp3")
+		tele_player.play()
 	print('Halloi')
 	incomeTimer.start()
 	

@@ -118,11 +118,11 @@ func debugMenu():
 # button
 func _button_pressed():
 	var rng = RandomNumberGenerator.new()
-	var rndnum = rng.randi_range(0, 19)
-	if not rndnum == 19:
+	var rndnum = rng.randi_range(0, 49)
+	if not rndnum == 49:
 		Global.money += (Global.moneyincrease)
 	else:
-		Global.money += (Global.moneyincrease*4)
+		Global.money += (Global.moneyincrease*8)
 		critclicksfx.play()
 	#print(Global.money)
 

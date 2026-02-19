@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyufyesmk2fke"]
+[gd_scene load_steps=9 format=3 uid="uid://dyufyesmk2fke"]
 
 [ext_resource type="Script" uid="uid://b6yiav153k0aq" path="res://Upgrade.gd" id="1_j1h6a"]
+[ext_resource type="Texture2D" uid="uid://ddy0qvco8gavm" path="res://Assets/Box_building.png" id="2_8oh64"]
 [ext_resource type="Texture2D" uid="uid://bjoluk03o3y0t" path="res://Assets/Scam_call_center_building_Phone.png" id="2_x1yxl"]
+[ext_resource type="Texture2D" uid="uid://c0jl0mx7j8gx5" path="res://Assets/Box_building_but_shiny.png" id="3_4q5ub"]
 [ext_resource type="AudioStream" uid="uid://0mnyu5twmn7x" path="res://Assets/Audio Assets/Error.mp3" id="3_pqx2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q5ub"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xomgr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4q5ub"]
+texture = ExtResource("3_4q5ub")
 
 [node name="Upgrade" type="Control"]
 custom_minimum_size = Vector2(0, 40)
@@ -18,14 +27,16 @@ layout_mode = 0
 offset_right = 160.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
 layout_mode = 2
-color = Color(0, 0.670588, 0.933333, 1)
+texture = ExtResource("2_8oh64")
 
 [node name="UpgradeButton" type="Button" parent="PanelContainer"]
 custom_minimum_size = Vector2(50, 40)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4q5ub")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xomgr")
+theme_override_styles/focus = SubResource("StyleBoxTexture_4q5ub")
 
 [node name="Icon" type="TextureRect" parent="PanelContainer/UpgradeButton"]
 custom_minimum_size = Vector2(40, 40)
@@ -51,10 +62,10 @@ fit_content = true
 modulate = Color(0, 1, 0.0666667, 1)
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 0
-offset_left = 112.0
-offset_top = 12.0
-offset_right = 160.0
-offset_bottom = 41.0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 158.0
+offset_bottom = 38.0
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 25
 fit_content = true
@@ -67,8 +78,9 @@ layout_mode = 0
 offset_left = 44.0
 offset_top = 19.0
 offset_right = 52.0
-offset_bottom = 59.0
+offset_bottom = 37.0
 mouse_filter = 1
+fit_content = true
 
 [node name="Price" type="RichTextLabel" parent="PanelContainer/UpgradeButton"]
 modulate = Color(0, 1, 0.0666667, 1)
@@ -77,13 +89,13 @@ layout_mode = 0
 offset_left = 55.0
 offset_top = 19.0
 offset_right = 123.0
-offset_bottom = 59.0
+offset_bottom = 37.0
 mouse_filter = 1
 text = "
 "
+fit_content = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pqx2f")
 volume_db = -10.0
 pitch_scale = 0.3
-stream_paused = true

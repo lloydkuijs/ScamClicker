@@ -74,14 +74,15 @@ grow_vertical = 2
 script = ExtResource("1_a6rls")
 
 [node name="FleurpleBackground" type="Sprite2D" parent="."]
+modulate = Color(1.0627335, 1.0627335, 1.0627335, 1)
 position = Vector2(80, 181)
 texture = ExtResource("2_8kdgp")
 
 [node name="Rectangles" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_top = 98.0
-offset_right = 249.0
-offset_bottom = 300.0
+offset_top = 102.0
+offset_right = 162.0
+offset_bottom = 290.0
 
 [node name="TelephoneUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
 unique_name_in_owner = true
@@ -200,7 +201,7 @@ Telephone produces twice the profit, but you can never buy it lmao"
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ve2yn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TeleRing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_2wwcs")
 volume_db = 12.0
 
