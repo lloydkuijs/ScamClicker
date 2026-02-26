@@ -70,5 +70,9 @@ func _on_texture_button_pressed() -> void:
 		Global.money = Global.money * 0.75
 		lootchest.visible = false
 	else:
-		Global.money = Global.money * 1.5 + 1
-		lootchest.visible = false
+		if Global.money == 0:
+			Global.money += 1
+			lootchest.visible = false
+		else:
+			Global.money = Global.money * 1.5
+			lootchest.visible = false

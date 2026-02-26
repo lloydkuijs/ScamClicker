@@ -143,7 +143,7 @@ func flavourText():
 	flavourtexts = ['You accidentally scam called your mom, how could you not have recognized her voice!?!? >;(', 
 					'Hahahahahaha', 
 					'News: a local politician got called by his "bank", lost thousands', 
-					'News: Millions lose money due to massive rugpull scam', 
+					'News: Millions lose money after massive rugpull scam', 
 					'Hackers and Scammers are now teaming up: Beware!', 
 					'Scammers have become better with their scams', 
 					'Dutch police are working to take down scam call centers in India, they have not yet arrived.',

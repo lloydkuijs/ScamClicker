@@ -22,6 +22,9 @@ func calcPassiveIncome(telup, emup, lotup):
 	var LotteryUpgrade = lotup * (25 * MultiplierUpgrades * LotteryMulti)
 	PassiveIncome =  telephoneUpgrade + emailUpgrade + LotteryUpgrade
 	return PassiveIncome
+	
+func cursorUpgrade():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

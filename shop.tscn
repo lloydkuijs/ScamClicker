@@ -1,15 +1,21 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgms5rfw7oerh"]
+[gd_scene load_steps=31 format=3 uid="uid://dgms5rfw7oerh"]
 
 [ext_resource type="Script" uid="uid://c2ukdmvda4tyd" path="res://Shop.gd" id="1_a6rls"]
 [ext_resource type="Texture2D" uid="uid://cgj6v3vokwxcq" path="res://Assets/Fleurple.png" id="2_8kdgp"]
 [ext_resource type="PackedScene" uid="uid://dyufyesmk2fke" path="res://rectangleUpgrade.tscn" id="2_cf5fc"]
+[ext_resource type="Texture2D" uid="uid://17y7m35ml673" path="res://Assets/HoldPlacers.png" id="4_msgp6"]
 [ext_resource type="Texture2D" uid="uid://k445qe24h7xr" path="res://Assets/PhoneUpgradePlaceholderSmall.png" id="4_rpri1"]
 [ext_resource type="PackedScene" uid="uid://ceiuanqbl5xa2" path="res://squareUpgrade.tscn" id="4_sp2lo"]
 [ext_resource type="AudioStream" uid="uid://4ktnomf2wvoc" path="res://Assets/Audio Assets/telring background.mp3" id="5_2wwcs"]
 [ext_resource type="Script" uid="uid://yf0den66377f" path="res://squares.gd" id="5_8kdgp"]
+[ext_resource type="Texture2D" uid="uid://dof2soqefy6jf" path="res://Assets/Upgrade_symbole_Cursor.png" id="7_sw5c6"]
 [ext_resource type="Texture2D" uid="uid://dogj7elpe6a5x" path="res://Assets/Buy_Box.png" id="8_myf4l"]
 [ext_resource type="AudioStream" uid="uid://0mnyu5twmn7x" path="res://Assets/Audio Assets/Error.mp3" id="8_p5a0g"]
 [ext_resource type="AudioStream" uid="uid://bldju47hdmayp" path="res://Assets/Audio Assets/YGM.mp3" id="9_xqmyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msgp6"]
+atlas = ExtResource("4_msgp6")
+region = Rect2(35.51954, 5.6238756, 26.46772, 19.767029)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tm4cm"]
 
@@ -46,6 +52,10 @@ region = Rect2(128, -1.5, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ve2yn"]
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(160, -1.5, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e23gp"]
+atlas = ExtResource("7_sw5c6")
+region = Rect2(1.5, -1.5, 32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myf4l"]
 border_color = Color(0.8001019, 0.8001019, 0.8001019, 0)
@@ -87,6 +97,7 @@ offset_bottom = 290.0
 [node name="TelephoneUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
 unique_name_in_owner = true
 layout_mode = 2
+UpgradeIcon = SubResource("AtlasTexture_msgp6")
 UpgradeName = "Telephone"
 UpgradePrice = 10
 
@@ -187,7 +198,10 @@ position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ws3kj")
 
 [node name="Row2" type="HBoxContainer" parent="Squares"]
+clip_contents = true
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="SqUpgrade6" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
@@ -198,6 +212,54 @@ hoverText = "Emerald Telephone
 Telephone produces twice the profit, but you can never buy it lmao"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade6"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_ve2yn")
+
+[node name="SqUpgrade7" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 4218724725952925696
+telupSquareFlag = 101
+hoverText = "Bronze Cursor
+($4218724725952925700)
+It doesn't work atm"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade7"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_e23gp")
+
+[node name="SqUpgrade8" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 4218724725952925696
+telupSquareFlag = 101
+hoverText = "Emerald Telephone
+($4218724725952925700)
+Telephone produces twice the profit, but you can never buy it lmao"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade8"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_ve2yn")
+
+[node name="SqUpgrade9" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 4218724725952925696
+telupSquareFlag = 101
+hoverText = "Emerald Telephone
+($4218724725952925700)
+Telephone produces twice the profit, but you can never buy it lmao"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade9"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_ve2yn")
+
+[node name="SqUpgrade10" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 4218724725952925696
+telupSquareFlag = 101
+hoverText = "Emerald Telephone
+($4218724725952925700)
+Telephone produces twice the profit, but you can never buy it lmao"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade10"]
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ve2yn")
 

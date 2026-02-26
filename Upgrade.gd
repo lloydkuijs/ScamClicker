@@ -1,7 +1,7 @@
 extends Control
 
-@onready var UpgradeButton = $PanelContainer/UpgradeButton
-@export var UpgradeIcon: String
+@onready var UpgradeButton = $UpgradeButton
+@export var UpgradeIcon: Texture2D
 @export var UpgradeName: String
 @export var Currency: String
 @export var UpgradeQuantity: int
@@ -13,8 +13,9 @@ signal upgrade_pressed
 func _ready():
 	UpgradeButton.pressed.connect(_upgrade_button_pressed)
 	
-	$PanelContainer/UpgradeButton/Name.text = UpgradeName
-	$PanelContainer/UpgradeButton/Currency.text = "€"
+	$UpgradeButton/Icon.texture = UpgradeIcon
+	$UpgradeButton/Name.text = UpgradeName
+	$UpgradeButton/Currency.text = "€"
 	
 	UpgradeText()
 	
@@ -57,5 +58,5 @@ func pricerounding(price: float) -> String:
 		return "%.1f%s" % [scaled_value, suffixes[i]]
 
 func UpgradeText():
-	$PanelContainer/UpgradeButton/Quantity.text = str(UpgradeQuantity)
-	$PanelContainer/UpgradeButton/Price.text = pricerounding(UpgradePrice)
+	$UpgradeButton/Quantity.text = str(UpgradeQuantity)
+	$UpgradeButton/Price.text = pricerounding(UpgradePrice)
