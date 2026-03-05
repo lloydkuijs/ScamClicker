@@ -1,21 +1,18 @@
-[gd_scene load_steps=31 format=3 uid="uid://dgms5rfw7oerh"]
+[gd_scene load_steps=33 format=3 uid="uid://dgms5rfw7oerh"]
 
 [ext_resource type="Script" uid="uid://c2ukdmvda4tyd" path="res://Shop.gd" id="1_a6rls"]
 [ext_resource type="Texture2D" uid="uid://cgj6v3vokwxcq" path="res://Assets/Fleurple.png" id="2_8kdgp"]
 [ext_resource type="PackedScene" uid="uid://dyufyesmk2fke" path="res://rectangleUpgrade.tscn" id="2_cf5fc"]
-[ext_resource type="Texture2D" uid="uid://17y7m35ml673" path="res://Assets/HoldPlacers.png" id="4_msgp6"]
+[ext_resource type="Texture2D" uid="uid://cyfrwmedc5xsb" path="res://Assets/iconatlas.tres" id="4_msgp6"]
 [ext_resource type="Texture2D" uid="uid://k445qe24h7xr" path="res://Assets/PhoneUpgradePlaceholderSmall.png" id="4_rpri1"]
 [ext_resource type="PackedScene" uid="uid://ceiuanqbl5xa2" path="res://squareUpgrade.tscn" id="4_sp2lo"]
 [ext_resource type="AudioStream" uid="uid://4ktnomf2wvoc" path="res://Assets/Audio Assets/telring background.mp3" id="5_2wwcs"]
 [ext_resource type="Script" uid="uid://yf0den66377f" path="res://squares.gd" id="5_8kdgp"]
+[ext_resource type="Texture2D" uid="uid://17y7m35ml673" path="res://Assets/HoldPlacers.png" id="6_e23gp"]
 [ext_resource type="Texture2D" uid="uid://dof2soqefy6jf" path="res://Assets/Upgrade_symbole_Cursor.png" id="7_sw5c6"]
 [ext_resource type="Texture2D" uid="uid://dogj7elpe6a5x" path="res://Assets/Buy_Box.png" id="8_myf4l"]
 [ext_resource type="AudioStream" uid="uid://0mnyu5twmn7x" path="res://Assets/Audio Assets/Error.mp3" id="8_p5a0g"]
 [ext_resource type="AudioStream" uid="uid://bldju47hdmayp" path="res://Assets/Audio Assets/YGM.mp3" id="9_xqmyw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_msgp6"]
-atlas = ExtResource("4_msgp6")
-region = Rect2(35.51954, 5.6238756, 26.46772, 19.767029)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tm4cm"]
 
@@ -25,6 +22,14 @@ particle_flag_disable_z = true
 spread = 15.0
 flatness = 0.5
 gravity = Vector3(0, 98, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrolr"]
+atlas = ExtResource("6_e23gp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gldgk"]
+atlas = ExtResource("6_e23gp")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x3war"]
 load_path = "res://.godot/imported/Upgrade_symbol_Phone.png-f1a3b3922104fdb525018fb65cc81177.ctex"
@@ -97,7 +102,7 @@ offset_bottom = 290.0
 [node name="TelephoneUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
 unique_name_in_owner = true
 layout_mode = 2
-UpgradeIcon = SubResource("AtlasTexture_msgp6")
+UpgradeIcon = ExtResource("4_msgp6")
 UpgradeName = "Telephone"
 UpgradePrice = 10
 
@@ -113,12 +118,14 @@ process_material = SubResource("ParticleProcessMaterial_o63ij")
 [node name="EmailUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
 unique_name_in_owner = true
 layout_mode = 2
+UpgradeIcon = SubResource("AtlasTexture_rrolr")
 UpgradeName = "Email"
 UpgradePrice = 500
 
 [node name="LotteryUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
 unique_name_in_owner = true
 layout_mode = 2
+UpgradeIcon = SubResource("AtlasTexture_gldgk")
 UpgradeName = "Lottery"
 UpgradePrice = 2500
 
@@ -126,7 +133,7 @@ UpgradePrice = 2500
 layout_mode = 0
 offset_top = 290.0
 offset_right = 164.0
-offset_bottom = 431.0
+offset_bottom = 355.0
 theme_override_constants/separation = 0
 script = ExtResource("5_8kdgp")
 
@@ -142,7 +149,7 @@ text = "test"
 UpgradePrice = 25
 telupSquareFlag = 1
 hoverText = "Bronze Telephone
-($25)
+(€25)
 Telephone produces twice the profit"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade"]
@@ -154,7 +161,7 @@ layout_mode = 2
 UpgradePrice = 500
 telupSquareFlag = 10
 hoverText = "Silver Telephone
-($500)
+(€500)
 Telephone produces twice the profit"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade2"]
@@ -166,7 +173,7 @@ layout_mode = 2
 UpgradePrice = 2500
 telupSquareFlag = 25
 hoverText = "Golden Telephone
-($2.500)
+(€2.500)
 Telephone produces twice the profit"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade3"]
@@ -178,7 +185,7 @@ layout_mode = 2
 UpgradePrice = 5000000
 telupSquareFlag = 50
 hoverText = "Ruby Telephone
-($5M)
+(€5M)
 Telephone produces twice the profit"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade4"]
@@ -190,7 +197,7 @@ layout_mode = 2
 UpgradePrice = 5000000000000
 telupSquareFlag = 100
 hoverText = "Diamond Telephone
-($5T)
+(€5T)
 Telephone produces twice the profit"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade5"]
@@ -208,7 +215,7 @@ layout_mode = 2
 UpgradePrice = 4218724725952925696
 telupSquareFlag = 101
 hoverText = "Emerald Telephone
-($4218724725952925700)
+(€4218724725952925700)
 Telephone produces twice the profit, but you can never buy it lmao"
 
 [node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade6"]
