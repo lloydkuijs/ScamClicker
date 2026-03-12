@@ -2,6 +2,8 @@ extends Control
 
 @onready var MultiplierButton = $squareShopButton
 @onready var audio_player = $AudioStreamPlayer
+@export_enum("Telephone", "Cursor")
+var upgrade_category: String = "Telephone"
 @export_multiline var text: String
 @export var UpgradeIcon: String
 @export var UpgradePrice: int
@@ -30,7 +32,9 @@ func _ready():
 func _process(delta):
 	if not %TelephoneUpgrade:
 		return
-	if not upgrade_bought and %TelephoneUpgrade.UpgradeQuantity >= telupSquareFlag:
+	if upgrade_category == "Telephone" and not upgrade_bought and %TelephoneUpgrade.UpgradeQuantity >= telupSquareFlag:
+		show()
+	if upgrade_category == "Cursor" and not upgrade_bought and Global.totalclicks >= telupSquareFlag:
 		show()
 	if upgrade_bought and visible:
 		hide()

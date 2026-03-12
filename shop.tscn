@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://dgms5rfw7oerh"]
+[gd_scene load_steps=34 format=3 uid="uid://dgms5rfw7oerh"]
 
 [ext_resource type="Script" uid="uid://c2ukdmvda4tyd" path="res://Shop.gd" id="1_a6rls"]
 [ext_resource type="Texture2D" uid="uid://cgj6v3vokwxcq" path="res://Assets/Fleurple.png" id="2_8kdgp"]
 [ext_resource type="PackedScene" uid="uid://dyufyesmk2fke" path="res://rectangleUpgrade.tscn" id="2_cf5fc"]
 [ext_resource type="Texture2D" uid="uid://cyfrwmedc5xsb" path="res://Assets/iconatlas.tres" id="4_msgp6"]
-[ext_resource type="Texture2D" uid="uid://k445qe24h7xr" path="res://Assets/PhoneUpgradePlaceholderSmall.png" id="4_rpri1"]
 [ext_resource type="PackedScene" uid="uid://ceiuanqbl5xa2" path="res://squareUpgrade.tscn" id="4_sp2lo"]
 [ext_resource type="AudioStream" uid="uid://4ktnomf2wvoc" path="res://Assets/Audio Assets/telring background.mp3" id="5_2wwcs"]
 [ext_resource type="Script" uid="uid://yf0den66377f" path="res://squares.gd" id="5_8kdgp"]
@@ -15,6 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://bldju47hdmayp" path="res://Assets/Audio Assets/YGM.mp3" id="9_xqmyw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tm4cm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msgp6"]
+atlas = ExtResource("6_e23gp")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o63ij"]
 lifetime_randomness = 1.0
@@ -38,9 +41,17 @@ load_path = "res://.godot/imported/Upgrade_symbol_Phone.png-f1a3b3922104fdb52501
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(0, -1.5, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_763b7"]
+atlas = ExtResource("7_sw5c6")
+region = Rect2(1.5, -1.5, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_oybjb"]
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(32, -1.5, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e23gp"]
+atlas = ExtResource("7_sw5c6")
+region = Rect2(33.5, -1.5, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucqk5"]
 atlas = SubResource("CompressedTexture2D_x3war")
@@ -50,17 +61,13 @@ region = Rect2(64, -1.5, 32, 32)
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(96, -1.5, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ws3kj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve2yn"]
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(128, -1.5, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ve2yn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws3kj"]
 atlas = SubResource("CompressedTexture2D_x3war")
 region = Rect2(160, -1.5, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e23gp"]
-atlas = ExtResource("7_sw5c6")
-region = Rect2(1.5, -1.5, 32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myf4l"]
 border_color = Color(0.8001019, 0.8001019, 0.8001019, 0)
@@ -110,9 +117,11 @@ UpgradePrice = 10
 material = SubResource("CanvasItemMaterial_tm4cm")
 emitting = false
 amount = 15
-texture = ExtResource("4_rpri1")
+texture = SubResource("AtlasTexture_msgp6")
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_o63ij")
 
 [node name="EmailUpgrade" parent="Rectangles" instance=ExtResource("2_cf5fc")]
@@ -143,7 +152,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SqUpgrade" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
+[node name="TlpUpgrade1" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
 text = "test"
 UpgradePrice = 25
@@ -152,11 +161,24 @@ hoverText = "Bronze Telephone
 (€25)
 Telephone produces twice the profit"
 
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade"]
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/TlpUpgrade1"]
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_iidqy")
 
-[node name="SqUpgrade2" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
+[node name="ClickUpgrade1" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+upgrade_category = "Cursor"
+UpgradePrice = 100
+telupSquareFlag = 69
+hoverText = "Bronze Cursor
+(€100)
+Double the clicks"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/ClickUpgrade1"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_763b7")
+
+[node name="TlpUpgrade2" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
 UpgradePrice = 500
 telupSquareFlag = 10
@@ -164,11 +186,25 @@ hoverText = "Silver Telephone
 (€500)
 Telephone produces twice the profit"
 
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade2"]
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/TlpUpgrade2"]
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_oybjb")
 
-[node name="SqUpgrade3" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
+[node name="ClickUpgrade2" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+upgrade_category = "Cursor"
+UpgradePrice = 1000
+telupSquareFlag = 420
+hoverText = "Silver Cursor
+($1000)
+Double the clicks"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/ClickUpgrade2"]
+unique_name_in_owner = true
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_e23gp")
+
+[node name="TlpUpgrade3" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
 UpgradePrice = 2500
 telupSquareFlag = 25
@@ -176,33 +212,9 @@ hoverText = "Golden Telephone
 (€2.500)
 Telephone produces twice the profit"
 
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade3"]
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/TlpUpgrade3"]
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ucqk5")
-
-[node name="SqUpgrade4" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
-layout_mode = 2
-UpgradePrice = 5000000
-telupSquareFlag = 50
-hoverText = "Ruby Telephone
-(€5M)
-Telephone produces twice the profit"
-
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade4"]
-position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_o5265")
-
-[node name="SqUpgrade5" parent="Squares/Row1" instance=ExtResource("4_sp2lo")]
-layout_mode = 2
-UpgradePrice = 5000000000000
-telupSquareFlag = 100
-hoverText = "Diamond Telephone
-(€5T)
-Telephone produces twice the profit"
-
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row1/SqUpgrade5"]
-position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_ws3kj")
 
 [node name="Row2" type="HBoxContainer" parent="Squares"]
 clip_contents = true
@@ -210,39 +222,27 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SqUpgrade6" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+[node name="TlpUpgrade4" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 5000000
+telupSquareFlag = 50
+hoverText = "Ruby Telephone
+(€5M)
+Telephone produces twice the profit"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/TlpUpgrade4"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_o5265")
+
+[node name="TlpUpgrade6" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
 UpgradePrice = 4218724725952925696
 telupSquareFlag = 101
-hoverText = "Emerald Telephone
+hoverText = "Diamond Telephone
 (€4218724725952925700)
 Telephone produces twice the profit, but you can never buy it lmao"
 
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade6"]
-position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_ve2yn")
-
-[node name="SqUpgrade7" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
-layout_mode = 2
-UpgradePrice = 4218724725952925696
-telupSquareFlag = 101
-hoverText = "Bronze Cursor
-($4218724725952925700)
-It doesn't work atm"
-
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade7"]
-position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_e23gp")
-
-[node name="SqUpgrade8" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
-layout_mode = 2
-UpgradePrice = 4218724725952925696
-telupSquareFlag = 101
-hoverText = "Emerald Telephone
-($4218724725952925700)
-Telephone produces twice the profit, but you can never buy it lmao"
-
-[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/SqUpgrade8"]
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/TlpUpgrade6"]
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ve2yn")
 
@@ -250,7 +250,7 @@ texture = SubResource("AtlasTexture_ve2yn")
 layout_mode = 2
 UpgradePrice = 4218724725952925696
 telupSquareFlag = 101
-hoverText = "Emerald Telephone
+hoverText = "Diamond Telephone
 ($4218724725952925700)
 Telephone produces twice the profit, but you can never buy it lmao"
 
@@ -258,11 +258,23 @@ Telephone produces twice the profit, but you can never buy it lmao"
 position = Vector2(16, 16)
 texture = SubResource("AtlasTexture_ve2yn")
 
+[node name="TlpUpgrade5" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
+layout_mode = 2
+UpgradePrice = 5000000000000
+telupSquareFlag = 100
+hoverText = "Emerald Telephone
+(€5T)
+Telephone produces twice the profit"
+
+[node name="Sprite2D" type="Sprite2D" parent="Squares/Row2/TlpUpgrade5"]
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_ws3kj")
+
 [node name="SqUpgrade10" parent="Squares/Row2" instance=ExtResource("4_sp2lo")]
 layout_mode = 2
 UpgradePrice = 4218724725952925696
 telupSquareFlag = 101
-hoverText = "Emerald Telephone
+hoverText = "Diamond Telephone
 ($4218724725952925700)
 Telephone produces twice the profit, but you can never buy it lmao"
 
@@ -389,12 +401,14 @@ horizontal_alignment = 1
 [connection signal="upgrade_pressed" from="Rectangles/TelephoneUpgrade" to="." method="_on_scall_upgrade_pressed"]
 [connection signal="upgrade_pressed" from="Rectangles/EmailUpgrade" to="." method="_on_email_upgrade_pressed"]
 [connection signal="upgrade_pressed" from="Rectangles/LotteryUpgrade" to="." method="_on_lotteryup_upgrade_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row1/SqUpgrade" to="." method="_on_sq_upgrade_multiplier_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row1/SqUpgrade2" to="." method="_on_sq_upgrade_multiplier_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row1/SqUpgrade3" to="." method="_on_sq_upgrade_multiplier_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row1/SqUpgrade4" to="." method="_on_sq_upgrade_multiplier_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row1/SqUpgrade5" to="." method="_on_sq_upgrade_multiplier_pressed"]
-[connection signal="multiplier_pressed" from="Squares/Row2/SqUpgrade6" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row1/TlpUpgrade1" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row1/ClickUpgrade1" to="." method="_on_sq_upgrade_cursor_upgrade_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row1/TlpUpgrade2" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row1/ClickUpgrade2" to="." method="_on_sq_upgrade_cursor_upgrade_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row1/TlpUpgrade3" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row2/TlpUpgrade4" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row2/TlpUpgrade6" to="." method="_on_sq_upgrade_multiplier_pressed"]
+[connection signal="multiplier_pressed" from="Squares/Row2/TlpUpgrade5" to="." method="_on_sq_upgrade_multiplier_pressed"]
 [connection signal="pressed" from="HBoxContainer/1x" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="HBoxContainer/10x" to="." method="_on_10x_pressed"]
 [connection signal="pressed" from="HBoxContainer/50x" to="." method="_on_50x_pressed"]

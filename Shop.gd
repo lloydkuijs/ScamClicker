@@ -215,6 +215,9 @@ func _on_sq_upgrade_multiplier_pressed(): #telephoneMultiplier 1
 
 func _on_sq_upgrade_2_multiplier_pressed(): #telephoneMultiplier 2
 	print('bozo')
+	
+func _on_sq_upgrade_cursor_upgrade_pressed():
+	Global.moneyincrease = Global.moneyincrease * 2
 
 func ontimes(times: int):
 	onetoggled = false;tentoggled = false;fiftytoggled = false;maxtoggled = false

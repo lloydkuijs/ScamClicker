@@ -10,6 +10,7 @@ var LotteryMulti: int = 1
 var telupbought: bool
 var telupmultbought: bool
 var moneyincrease = 1
+var totalclicks: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -117,6 +117,7 @@ func debugMenu():
 
 # button
 func _button_pressed():
+	Global.totalclicks += 1
 	var rng = RandomNumberGenerator.new()
 	var rndnum = rng.randi_range(0, 49)
 	if not rndnum == 49:
@@ -124,7 +125,7 @@ func _button_pressed():
 	else:
 		Global.money += (Global.moneyincrease*8)
 		critclicksfx.play()
-	#print(Global.money)
+	print(Global.totalclicks)
 
 func _on_phone_button_mouse_entered() -> void:
 	$AnimationPlayer.play("Hover")
