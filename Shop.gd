@@ -20,6 +20,10 @@ var faketotmoney
 @onready var email_player : AudioStreamPlayer = $YGM
 @onready var not_enough_audio: AudioStreamPlayer = $notEnoughAudio
 
+signal telephone_upgrade_pressed
+signal email_upgrade_pressed
+signal lottery_upgrade_pressed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(incomeTimer)
@@ -100,6 +104,7 @@ func _on_scall_upgrade_pressed():
 	telparts.restart()
 	print('Halloi')
 	incomeTimer.start()
+	telephone_upgrade_pressed.emit()
 
 func _on_email_upgrade_pressed():
 	if maxtoggled == true or tentoggled == true or fiftytoggled == true:
@@ -154,6 +159,7 @@ func _on_email_upgrade_pressed():
 		email_player.play()
 	print('Halloi')
 	incomeTimer.start()
+	email_upgrade_pressed.emit()
 
 func _on_lotteryup_upgrade_pressed() -> void:
 	if maxtoggled == true or tentoggled == true or fiftytoggled == true:
@@ -208,6 +214,7 @@ func _on_lotteryup_upgrade_pressed() -> void:
 		tele_player.play()
 	print('Halloi')
 	incomeTimer.start()
+	lottery_upgrade_pressed.emit()
 	
 func _on_sq_upgrade_multiplier_pressed(): #telephoneMultiplier 1
 	Global.TelephoneMultiplier = Global.TelephoneMultiplier * 2

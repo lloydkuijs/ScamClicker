@@ -6,6 +6,10 @@ extends Node
 @onready var moneybutton = $PhoneButton
 @onready var audio_player = $AudioStreamPlayer
 @onready var critclicksfx = $"Critical Hit"
+@onready var churh = $BG_Phone/churh
+@onready var churh2 = $BG_Phone2/churh
+@onready var placeholder2 = $fosterParent/placeholder
+@onready var dynlist = []
 var timer: Timer = Timer.new()
 var backtimer: Timer = Timer.new()
 var _time: float
@@ -14,6 +18,7 @@ signal konami_entered
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	churh.visible = false
 	newflavortext()
 	moneybutton.pressed.connect(_button_pressed)
 	
@@ -30,6 +35,17 @@ func _ready():
 	backtimer.autostart = true
 	backtimer.timeout.connect(_background_timer_timeout)
 	backtimer.start()
+
+# summon building
+func summon_thing(thing: Sprite2D):
+	if thing.get_parent().get_child_count() >= 11: return
+	thing.visible = true
+	var fck: Sprite2D = thing.duplicate()
+	fck.position = thing.position
+	fck.visible = true
+	thing.get_parent().add_child(fck)
+	thing.position += Vector2(50, 0)
+	thing.visible = false
 
 func _on_timer_timeout():
 	newflavortext()
@@ -154,6 +170,15 @@ func flavourText():
 	text = flavourtexts[rng.randf_range(0, round(len(flavourtexts)))]
 	return text
 
+func _on_shop_telephone_upgrade_pressed() -> void:
+	summon_thing(churh)
+
+func _on_shop_email_upgrade_pressed() -> void:
+	summon_thing(churh2)
+
+func _on_shop_lottery_upgrade_pressed() -> void:
+	summon_thing(placeholder2)
+	
 #scams to be added
 #product/service scam (trimming scam as flavour text (ex: Free Armour Trimming))
 #crypto scam
@@ -166,9 +191,10 @@ func flavourText():
 #particles after buying upgrade
 #script for multiple bought (DONE)
 #critical clicks (5% for 4x) (DONE)
-#click upgrade
+#click upgrade (DONE)
 #currency display change?
 #better box timer (it reappears too quickly) (DONE)
+#building different y-axis each one bought
 
 #list of things to fix
 #display says 1000 Million/Billion/etc. at some roundings (DONE)
